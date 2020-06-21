@@ -1,0 +1,19 @@
+TITLE: Incivility consequences model 2;
+DATA: FILE = incv-data.csv;
+VARIABLE: NAMES = sam grid extreme issues heard dignity reason necess elec
+    noplace danger bipart truth debate inclusiv distract policy inst
+    shift common dialog threat avoid upset bother brush rwt;
+  USEVAR = grid extreme issues reason elec danger bipart debate distract
+    policy shift common dialog threat;
+  CATEGORICAL = grid extreme issues reason elec danger bipart debate 
+    distract policy shift common dialog threat;
+  MISSING = ALL(-9);
+  WEIGHT = rwt;
+ANALYSIS: ESTIMATOR = WLSMV;
+MODEL:
+  BadCon BY grid extreme reason danger bipart distract shift common 
+    dialog threat;
+  GoodCon BY issues elec debate policy;
+OUTPUT: STDYX;
+
+

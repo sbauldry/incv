@@ -1,0 +1,16 @@
+TITLE: Tolerance model 2;
+DATA: FILE = incv-data.csv;
+VARIABLE: NAMES = sam grid extreme issues heard dignity reason necess elec
+    noplace danger bipart truth debate inclusiv distract policy inst
+    shift common dialog threat avoid upset bother brush rwt;
+  USEVAR = inclusiv necess truth bother upset;
+  CATEGORICAL = inclusiv necess truth bother upset;
+  MISSING = ALL(-9);
+  WEIGHT = rwt;
+ANALYSIS: ESTIMATOR = WLSMV;
+MODEL:
+  Tol1 BY inclusiv necess truth;
+  Tol2 BY bother upset;
+OUTPUT: STDYX;
+
+

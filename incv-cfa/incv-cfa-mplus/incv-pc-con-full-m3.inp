@@ -1,6 +1,6 @@
-TITLE: Incivility consequences model 3;
+TITLE: Incivility consequences model 3 / polychoric;
 DATA: FILE = incv-data.csv;
-VARIABLE: NAMES = grid extreme issues heard dignity reason necess elec
+VARIABLE: NAMES = sam grid extreme issues heard dignity reason necess elec
     noplace danger bipart truth debate inclusiv distract policy inst
     shift common dialog threat avoid upset bother brush rwt;
   USEVAR = grid extreme reason  danger bipart distract shift common 
@@ -9,10 +9,6 @@ VARIABLE: NAMES = grid extreme issues heard dignity reason necess elec
     dialog threat;
   MISSING = ALL(-9);
   WEIGHT = rwt;
-ANALYSIS: ESTIMATOR = WLSMV;
-MODEL:
-  BadCon BY grid extreme reason danger bipart distract shift common 
-    dialog threat;
-OUTPUT: STDYX;
+ANALYSIS: TYPE = BASIC;
 
 

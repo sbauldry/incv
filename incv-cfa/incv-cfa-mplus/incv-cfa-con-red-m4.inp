@@ -1,12 +1,16 @@
-TITLE: Incivility consequences model 4 / polychoric;
+TITLE: Incivility consequences model 4;
 DATA: FILE = incv-data.csv;
-VARIABLE: NAMES = grid extreme issues heard dignity reason necess elec
+VARIABLE: NAMES = sam grid extreme issues heard dignity reason necess elec
     noplace danger bipart truth debate inclusiv distract policy inst
     shift common dialog threat avoid upset bother brush rwt;
   USEVAR = issues elec debate policy;
   CATEGORICAL = issues elec debate policy;
+  USEOBS = sam EQ 2;
   MISSING = ALL(-9);
   WEIGHT = rwt;
-ANALYSIS: TYPE = BASIC;
+ANALYSIS: ESTIMATOR = WLSMV;
+MODEL:
+  GoodCon BY issues elec debate policy;
+OUTPUT: STDYX;
 
 
