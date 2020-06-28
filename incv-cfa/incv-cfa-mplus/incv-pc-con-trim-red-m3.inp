@@ -1,0 +1,13 @@
+TITLE: Incivility consequences model 3 / polychoric;
+DATA: FILE = incv-data.csv;
+VARIABLE: NAMES = sam grid extreme issues heard dignity reason necess elec
+    noplace danger bipart truth debate inclusiv distract policy inst
+    shift common dialog threat avoid upset bother brush rwt;
+  USEVAR = bipart distract shift common dialog;
+  CATEGORICAL = bipart distract shift common dialog;
+  USEOBS = sam EQ 2;
+  MISSING = ALL(-9);
+  WEIGHT = rwt;
+ANALYSIS: TYPE = BASIC;
+
+

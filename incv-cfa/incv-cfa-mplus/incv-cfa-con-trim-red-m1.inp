@@ -1,0 +1,16 @@
+TITLE: Incivility consequences model 1;
+DATA: FILE = incv-data.csv;
+VARIABLE: NAMES = sam grid extreme issues heard dignity reason necess elec
+    noplace danger bipart truth debate inclusiv distract policy inst
+    shift common dialog threat avoid upset bother brush rwt;
+  USEVAR = bipart distract shift common dialog issues elec debate policy;
+  CATEGORICAL = bipart distract shift common dialog issues elec debate policy;
+  USEOBS = sam EQ 2;
+  MISSING = ALL(-9);
+  WEIGHT = rwt;
+ANALYSIS: ESTIMATOR = WLSMV;
+MODEL:
+  Consequences BY bipart distract shift common dialog issues elec debate policy;
+OUTPUT: STDYX;
+
+

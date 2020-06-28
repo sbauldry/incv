@@ -27,3 +27,30 @@ recode incissues incelec incdebate incpolicy incinclusive incnecess inctruth ///
 * saving data for analysis in Mplus and R
 desc 
 export delim using ~/desktop/incv-data.csv, replace delim(",") novar nolab
+
+
+*** Checking distributions of missing data
+recode _all (-9 = .)
+
+egen fnm1 = rowmiss(incissues incelec incdebate incpolicy)
+egen rnm1 = rowmiss(incissues incelec incdebate incpolicy) if fchck1 == 2
+
+tab fnm1
+tab rnm1
+
+egen fnm2 = rowmiss(incgrid incextreme increason incdanger incbipart ///
+  incdistract incshift inccommon incdialog incthreat)
+egen rnm2 = rowmiss(incgrid incextreme increason incdanger incbipart ///
+  incdistract incshift inccommon incdialog incthreat) if fchck1 == 2
+recode fnm2 rnm2 (5/10 = 5)
+  
+tab fnm2
+tab rnm2
+
+egen fnm3 = rowmiss(incbipart incdistract incshift inccommon incdialog)
+egen rnm3 = rowmiss(incbipart incdistract incshift inccommon incdialog) ///
+  if fchck1 == 2
+recode fnm3 rnm3 (5/10 = 5)
+  
+tab fnm3
+tab rnm3
