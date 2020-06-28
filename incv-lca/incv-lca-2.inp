@@ -1,0 +1,18 @@
+TITLE: Tolerance ofr Incivility;
+DATA: FILE = incv-lca-data.csv;
+VARIABLE:	
+	NAMES        = vulgar evid disres mislead stand prevent makefun face 
+                       intrupt rolleye demon derog charac insult reflist shout 
+                       exagg pid rwt;
+	USEVARIABLES = vulgar evid disres mislead stand prevent makefun 
+                       face intrupt rolleye demon derog charac insult 
+                       reflist shout exagg;
+	CATEGORICAL  = vulgar evid disres mislead stand prevent makefun 
+                       face intrupt rolleye demon derog charac insult 
+                       reflist shout exagg;
+	MISSING      = ALL(-9);
+	CLASSES      = c(2);
+	AUXILIARY    = pid;
+        WEIGHT       = rwt;
+ANALYSIS: TYPE = MIXTURE;
+OUTPUT: TECH11;
