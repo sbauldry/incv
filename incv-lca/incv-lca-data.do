@@ -53,7 +53,20 @@ graph export ~/desktop/incv-lca-fig1.jpg, replace
 
 
 * save data for analysis in Mplus
+preserve
 drop fchck1
 recode civvulgar-civexagg (. = -9)
 desc
 export delim using ~/desktop/incv-lca-data.csv, replace delim(",") novar nolab
+restore
+
+* save data for analysis in LatentGold
+preserve
+drop fchck1 nm
+rename (civvulgar-civexagg) (vulgar evid disres mislead stand prevent ///
+  makefun face intrupt rolleye demon derog charac insult reflist shout exagg)
+lab val vulgar-exagg
+tostring vulgar-exagg, replace
+order pid rwt 
+export delim using ~/desktop/incv-lca-data.csv, replace delim(",")
+restore
