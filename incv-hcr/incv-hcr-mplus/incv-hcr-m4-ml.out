@@ -1,0 +1,704 @@
+Mplus VERSION 8.4
+MUTHEN & MUTHEN
+09/30/2021   2:37 PM
+
+INPUT INSTRUCTIONS
+
+  TITLE: HCR Model 4;
+  DATA: FILE = incv-hcr-mplus-data.csv;
+  VARIABLE: NAMES = civthreat civharm civslur civmislead civdisres civderog
+              civvulgar civprevent civface civdemon civinsult civmakefun
+              civexagg civintrupt civreflist civshout civcharac civevid
+              civrolleye civstand rwt;
+    USEVAR = civslur civmislead civdisres civderog
+      civvulgar civprevent civface civdemon civinsult civmakefun
+      civexagg civintrupt civreflist civshout civcharac civevid
+      civrolleye;
+    CATEGORICAL = civslur civmislead civdisres civderog
+      civvulgar civprevent civface civdemon civinsult civmakefun
+      civexagg civintrupt civreflist civshout civcharac civevid
+      civrolleye;
+    MISSING = ALL(-9);
+    WEIGHT = rwt;
+  ANALYSIS: ESTIMATOR = MLR;
+  MODEL:
+    Discursive BY civface civintrupt civprevent civreflist civrolleye;
+    Deception  BY civexagg civmislead civevid;
+    Utterance  BY civderog civvulgar civdisres civslur civshout
+                  civcharac civmakefun civinsult civdemon;
+  OUTPUT: STDYX;
+
+
+
+*** WARNING in VARIABLE command
+  Note that only the first 8 characters of variable names are used in the output.
+  Shorten variable names to avoid any confusion.
+*** WARNING
+  Data set contains cases with missing on all variables.
+  These cases were not included in the analysis.
+  Number of cases with missing on all variables:  7
+   2 WARNING(S) FOUND IN THE INPUT INSTRUCTIONS
+
+
+
+HCR Model 4;
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                        2279
+
+Number of dependent variables                                   17
+Number of independent variables                                  0
+Number of continuous latent variables                            3
+
+Observed dependent variables
+
+  Binary and ordered categorical (ordinal)
+   CIVSLUR     CIVMISLE    CIVDISRE    CIVDEROG    CIVVULGA    CIVPREVE
+   CIVFACE     CIVDEMON    CIVINSUL    CIVMAKEF    CIVEXAGG    CIVINTRU
+   CIVREFLI    CIVSHOUT    CIVCHARA    CIVEVID     CIVROLLE
+
+Continuous latent variables
+   DISCURSI    DECEPTIO    UTTERANC
+
+Variables with special functions
+
+  Weight variable       RWT
+
+Estimator                                                      MLR
+Information matrix                                        OBSERVED
+Optimization Specifications for the Quasi-Newton Algorithm for
+Continuous Outcomes
+  Maximum number of iterations                                 100
+  Convergence criterion                                  0.100D-05
+Optimization Specifications for the EM Algorithm
+  Maximum number of iterations                                 500
+  Convergence criteria
+    Loglikelihood change                                 0.100D-02
+    Relative loglikelihood change                        0.100D-05
+    Derivative                                           0.100D-02
+Optimization Specifications for the M step of the EM Algorithm for
+Categorical Latent variables
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-02
+  Basis for M step termination                           ITERATION
+Optimization Specifications for the M step of the EM Algorithm for
+Censored, Binary or Ordered Categorical (Ordinal), Unordered
+Categorical (Nominal) and Count Outcomes
+  Number of M step iterations                                    1
+  M step convergence criterion                           0.100D-02
+  Basis for M step termination                           ITERATION
+  Maximum value for logit thresholds                            15
+  Minimum value for logit thresholds                           -15
+  Minimum expected cell size for chi-square              0.100D-01
+Maximum number of iterations for H1                           2000
+Convergence criterion for H1                             0.100D-03
+Optimization algorithm                                         EMA
+Integration Specifications
+  Type                                                    STANDARD
+  Number of integration points                                  15
+  Dimensions of numerical integration                            3
+  Adaptive quadrature                                           ON
+Link                                                         LOGIT
+Cholesky                                                        ON
+
+Input data file(s)
+  incv-hcr-mplus-data.csv
+Input data format  FREE
+
+
+SUMMARY OF DATA
+
+     Number of missing data patterns           252
+     Number of y missing data patterns           0
+     Number of u missing data patterns         252
+
+
+COVARIANCE COVERAGE OF DATA
+
+Minimum covariance coverage value   0.100
+
+
+     PROPORTION OF DATA PRESENT FOR U
+
+
+           Covariance Coverage
+              CIVSLUR       CIVMISLE      CIVDISRE      CIVDEROG      CIVVULGA
+              ________      ________      ________      ________      ________
+ CIVSLUR        0.960
+ CIVMISLE       0.939         0.958
+ CIVDISRE       0.941         0.941         0.966
+ CIVDEROG       0.943         0.942         0.949         0.974
+ CIVVULGA       0.941         0.937         0.940         0.942         0.960
+ CIVPREVE       0.931         0.929         0.932         0.934         0.929
+ CIVFACE        0.939         0.938         0.944         0.946         0.938
+ CIVDEMON       0.928         0.927         0.932         0.931         0.927
+ CIVINSUL       0.943         0.943         0.950         0.958         0.942
+ CIVMAKEF       0.941         0.939         0.945         0.946         0.939
+ CIVEXAGG       0.943         0.945         0.950         0.958         0.941
+ CIVINTRU       0.941         0.941         0.950         0.950         0.944
+ CIVREFLI       0.932         0.932         0.938         0.948         0.932
+ CIVSHOUT       0.945         0.942         0.951         0.959         0.944
+ CIVCHARA       0.938         0.939         0.945         0.955         0.938
+ CIVEVID        0.903         0.905         0.911         0.913         0.906
+ CIVROLLE       0.931         0.930         0.939         0.941         0.933
+
+
+           Covariance Coverage
+              CIVPREVE      CIVFACE       CIVDEMON      CIVINSUL      CIVMAKEF
+              ________      ________      ________      ________      ________
+ CIVPREVE       0.951
+ CIVFACE        0.933         0.962
+ CIVDEMON       0.915         0.926         0.948
+ CIVINSUL       0.934         0.945         0.932         0.976
+ CIVMAKEF       0.931         0.941         0.932         0.947         0.963
+ CIVEXAGG       0.936         0.947         0.934         0.961         0.946
+ CIVINTRU       0.935         0.944         0.932         0.952         0.946
+ CIVREFLI       0.925         0.935         0.925         0.953         0.938
+ CIVSHOUT       0.937         0.946         0.933         0.961         0.947
+ CIVCHARA       0.932         0.943         0.930         0.957         0.943
+ CIVEVID        0.901         0.906         0.899         0.912         0.908
+ CIVROLLE       0.925         0.935         0.925         0.942         0.936
+
+
+           Covariance Coverage
+              CIVEXAGG      CIVINTRU      CIVREFLI      CIVSHOUT      CIVCHARA
+              ________      ________      ________      ________      ________
+ CIVEXAGG       0.978
+ CIVINTRU       0.953         0.968
+ CIVREFLI       0.952         0.941         0.966
+ CIVSHOUT       0.961         0.953         0.953         0.978
+ CIVCHARA       0.958         0.948         0.947         0.958         0.972
+ CIVEVID        0.915         0.913         0.907         0.914         0.910
+ CIVROLLE       0.943         0.939         0.936         0.944         0.938
+
+
+           Covariance Coverage
+              CIVEVID       CIVROLLE
+              ________      ________
+ CIVEVID        0.930
+ CIVROLLE       0.907         0.958
+
+
+UNIVARIATE PROPORTIONS AND COUNTS FOR CATEGORICAL VARIABLES
+
+    CIVSLUR
+      Category 1    0.041           90.149
+      Category 2    0.026           56.502
+      Category 3    0.050          109.591
+      Category 4    0.083          181.909
+      Category 5    0.799         1741.533
+    CIVMISLE
+      Category 1    0.041           89.864
+      Category 2    0.043           94.049
+      Category 3    0.072          157.521
+      Category 4    0.138          299.727
+      Category 5    0.705         1532.512
+    CIVDISRE
+      Category 1    0.046          101.414
+      Category 2    0.044           96.870
+      Category 3    0.087          192.636
+      Category 4    0.187          412.461
+      Category 5    0.635         1399.533
+    CIVDEROG
+      Category 1    0.041           91.082
+      Category 2    0.058          128.557
+      Category 3    0.101          225.283
+      Category 4    0.154          342.017
+      Category 5    0.646         1434.108
+    CIVVULGA
+      Category 1    0.057          124.497
+      Category 2    0.052          114.313
+      Category 3    0.081          178.634
+      Category 4    0.157          343.669
+      Category 5    0.653         1434.079
+    CIVPREVE
+      Category 1    0.042           90.836
+      Category 2    0.053          115.625
+      Category 3    0.089          194.190
+      Category 4    0.205          445.365
+      Category 5    0.610         1324.630
+    CIVFACE
+      Category 1    0.046          100.750
+      Category 2    0.060          131.922
+      Category 3    0.103          225.446
+      Category 4    0.169          371.653
+      Category 5    0.622         1368.161
+    CIVDEMON
+      Category 1    0.049          104.491
+      Category 2    0.065          139.126
+      Category 3    0.115          246.966
+      Category 4    0.189          404.880
+      Category 5    0.582         1248.572
+    CIVINSUL
+      Category 1    0.047          103.797
+      Category 2    0.067          148.825
+      Category 3    0.121          269.628
+      Category 4    0.201          448.016
+      Category 5    0.564         1253.518
+    CIVMAKEF
+      Category 1    0.049          108.013
+      Category 2    0.079          173.272
+      Category 3    0.114          247.811
+      Category 4    0.197          429.023
+      Category 5    0.561         1224.296
+    CIVEXAGG
+      Category 1    0.052          115.392
+      Category 2    0.090          201.251
+      Category 3    0.143          319.571
+      Category 4    0.219          488.184
+      Category 5    0.496         1105.252
+    CIVINTRU
+      Category 1    0.047          102.870
+      Category 2    0.083          182.998
+      Category 3    0.174          383.682
+      Category 4    0.272          598.215
+      Category 5    0.425          935.129
+    CIVREFLI
+      Category 1    0.068          149.010
+      Category 2    0.106          234.145
+      Category 3    0.162          357.247
+      Category 4    0.249          547.521
+      Category 5    0.414          910.649
+    CIVSHOUT
+      Category 1    0.064          142.447
+      Category 2    0.129          288.006
+      Category 3    0.166          370.428
+      Category 4    0.234          521.026
+      Category 5    0.407          905.543
+    CIVCHARA
+      Category 1    0.092          203.578
+      Category 2    0.114          253.538
+      Category 3    0.160          355.243
+      Category 4    0.205          455.743
+      Category 5    0.428          949.660
+    CIVEVID
+      Category 1    0.122          258.838
+      Category 2    0.136          289.012
+      Category 3    0.197          417.772
+      Category 4    0.220          466.915
+      Category 5    0.325          689.166
+    CIVROLLE
+      Category 1    0.110          240.118
+      Category 2    0.172          375.394
+      Category 3    0.198          432.334
+      Category 4    0.215          469.382
+      Category 5    0.305          664.751
+
+
+
+THE MODEL ESTIMATION TERMINATED NORMALLY
+
+     THE CHI-SQUARE TEST CANNOT BE COMPUTED BECAUSE THE FREQUENCY TABLE FOR THE
+     CATEGORICAL VARIABLES IS TOO LARGE.
+
+
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       88
+
+Loglikelihood
+
+          H0 Value                      -37630.726
+          H0 Scaling Correction Factor      1.6512
+            for MLR
+
+Information Criteria
+
+          Akaike (AIC)                   75437.453
+          Bayesian (BIC)                 75941.824
+          Sample-Size Adjusted BIC       75662.232
+            (n* = (n + 2) / 24)
+
+
+
+MODEL RESULTS
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ DISCURSI BY
+    CIVFACE            1.000      0.000    999.000    999.000
+    CIVINTRUPT         0.937      0.065     14.427      0.000
+    CIVPREVENT         0.849      0.065     13.076      0.000
+    CIVREFLIST         0.750      0.068     11.066      0.000
+    CIVROLLEYE         0.692      0.057     12.086      0.000
+
+ DECEPTIO BY
+    CIVEXAGG           1.000      0.000    999.000    999.000
+    CIVMISLEAD         1.268      0.125     10.150      0.000
+    CIVEVID            0.575      0.049     11.823      0.000
+
+ UTTERANC BY
+    CIVDEROG           1.000      0.000    999.000    999.000
+    CIVVULGAR          0.871      0.076     11.397      0.000
+    CIVDISRES          1.077      0.094     11.504      0.000
+    CIVSLUR            0.875      0.090      9.770      0.000
+    CIVSHOUT           0.681      0.045     15.019      0.000
+    CIVCHARAC          0.591      0.044     13.390      0.000
+    CIVMAKEFUN         0.951      0.080     11.906      0.000
+    CIVINSULT          0.993      0.061     16.366      0.000
+    CIVDEMON           0.971      0.082     11.818      0.000
+
+ DECEPTIO WITH
+    DISCURSIVE         5.531      0.522     10.596      0.000
+
+ UTTERANC WITH
+    DISCURSIVE         6.887      0.707      9.743      0.000
+    DECEPTION          6.231      0.730      8.534      0.000
+
+ Thresholds
+    CIVSLUR$1         -5.543      0.290    -19.135      0.000
+    CIVSLUR$2         -4.561      0.228    -19.990      0.000
+    CIVSLUR$3         -3.471      0.189    -18.328      0.000
+    CIVSLUR$4         -2.401      0.155    -15.464      0.000
+    CIVMISLE$1        -6.264      0.412    -15.218      0.000
+    CIVMISLE$2        -4.760      0.322    -14.790      0.000
+    CIVMISLE$3        -3.391      0.231    -14.681      0.000
+    CIVMISLE$4        -1.794      0.161    -11.142      0.000
+    CIVDISRE$1        -6.204      0.297    -20.907      0.000
+    CIVDISRE$2        -4.632      0.229    -20.236      0.000
+    CIVDISRE$3        -3.034      0.168    -18.070      0.000
+    CIVDISRE$4        -1.108      0.125     -8.896      0.000
+    CIVDEROG$1        -6.076      0.318    -19.134      0.000
+    CIVDEROG$2        -4.147      0.216    -19.172      0.000
+    CIVDEROG$3        -2.595      0.170    -15.262      0.000
+    CIVDEROG$4        -1.146      0.126     -9.065      0.000
+    CIVVULGA$1        -4.976      0.221    -22.547      0.000
+    CIVVULGA$2        -3.673      0.176    -20.849      0.000
+    CIVVULGA$3        -2.522      0.136    -18.564      0.000
+    CIVVULGA$4        -1.116      0.113     -9.838      0.000
+    CIVPREVE$1        -4.808      0.231    -20.783      0.000
+    CIVPREVE$2        -3.396      0.153    -22.198      0.000
+    CIVPREVE$3        -2.216      0.118    -18.797      0.000
+    CIVPREVE$4        -0.653      0.093     -7.058      0.000
+    CIVFACE$1         -5.152      0.239    -21.583      0.000
+    CIVFACE$2         -3.594      0.173    -20.825      0.000
+    CIVFACE$3         -2.268      0.134    -16.974      0.000
+    CIVFACE$4         -0.855      0.109     -7.865      0.000
+    CIVDEMON$1        -5.638      0.249    -22.618      0.000
+    CIVDEMON$2        -3.861      0.186    -20.798      0.000
+    CIVDEMON$3        -2.291      0.135    -17.003      0.000
+    CIVDEMON$4        -0.625      0.111     -5.633      0.000
+    CIVINSUL$1        -5.719      0.293    -19.516      0.000
+    CIVINSUL$2        -3.830      0.187    -20.534      0.000
+    CIVINSUL$3        -2.204      0.147    -14.969      0.000
+    CIVINSUL$4        -0.476      0.111     -4.291      0.000
+    CIVMAKEF$1        -5.541      0.238    -23.242      0.000
+    CIVMAKEF$2        -3.539      0.177    -19.990      0.000
+    CIVMAKEF$3        -2.100      0.129    -16.340      0.000
+    CIVMAKEF$4        -0.435      0.109     -4.011      0.000
+    CIVEXAGG$1        -4.891      0.243    -20.097      0.000
+    CIVEXAGG$2        -3.089      0.161    -19.180      0.000
+    CIVEXAGG$3        -1.610      0.122    -13.175      0.000
+    CIVEXAGG$4         0.033      0.098      0.335      0.737
+    CIVINTRU$1        -4.889      0.195    -25.135      0.000
+    CIVINTRU$2        -3.070      0.133    -23.028      0.000
+    CIVINTRU$3        -1.367      0.100    -13.611      0.000
+    CIVINTRU$4         0.531      0.095      5.607      0.000
+    CIVREFLI$1        -3.773      0.166    -22.703      0.000
+    CIVREFLI$2        -2.250      0.109    -20.678      0.000
+    CIVREFLI$3        -0.969      0.087    -11.192      0.000
+    CIVREFLI$4         0.551      0.085      6.505      0.000
+    CIVSHOUT$1        -4.033      0.158    -25.536      0.000
+    CIVSHOUT$2        -2.162      0.111    -19.523      0.000
+    CIVSHOUT$3        -0.871      0.088     -9.847      0.000
+    CIVSHOUT$4         0.622      0.088      7.059      0.000
+    CIVCHARA$1        -3.267      0.138    -23.630      0.000
+    CIVCHARA$2        -1.965      0.103    -19.104      0.000
+    CIVCHARA$3        -0.818      0.084     -9.762      0.000
+    CIVCHARA$4         0.417      0.081      5.163      0.000
+    CIVEVID$1         -2.604      0.119    -21.849      0.000
+    CIVEVID$2         -1.457      0.091    -16.071      0.000
+    CIVEVID$3         -0.300      0.076     -3.918      0.000
+    CIVEVID$4          0.947      0.077     12.353      0.000
+    CIVROLLE$1        -2.979      0.128    -23.212      0.000
+    CIVROLLE$2        -1.408      0.093    -15.180      0.000
+    CIVROLLE$3        -0.168      0.080     -2.110      0.035
+    CIVROLLE$4         1.165      0.086     13.612      0.000
+
+ Variances
+    DISCURSIVE         5.926      0.790      7.502      0.000
+    DECEPTION          5.930      0.792      7.486      0.000
+    UTTERANCE          8.547      1.211      7.056      0.000
+
+
+RESULTS IN PROBABILITY SCALE
+
+                    Estimate
+
+ CIVSLUR
+    Category 1         0.038
+    Category 2         0.033
+    Category 3         0.060
+    Category 4         0.087
+    Category 5         0.781
+ CIVMISLE
+    Category 1         0.040
+    Category 2         0.051
+    Category 3         0.079
+    Category 4         0.136
+    Category 5         0.693
+ CIVDISRE
+    Category 1         0.044
+    Category 2         0.057
+    Category 3         0.100
+    Category 4         0.179
+    Category 5         0.621
+ CIVDEROG
+    Category 1         0.039
+    Category 2         0.074
+    Category 3         0.111
+    Category 4         0.145
+    Category 5         0.632
+ CIVVULGA
+    Category 1         0.055
+    Category 2         0.063
+    Category 3         0.089
+    Category 4         0.151
+    Category 5         0.641
+ CIVPREVE
+    Category 1         0.040
+    Category 2         0.066
+    Category 3         0.100
+    Category 4         0.198
+    Category 5         0.596
+ CIVFACE
+    Category 1         0.045
+    Category 2         0.072
+    Category 3         0.108
+    Category 4         0.163
+    Category 5         0.613
+ CIVDEMON
+    Category 1         0.047
+    Category 2         0.077
+    Category 3         0.122
+    Category 4         0.179
+    Category 5         0.574
+ CIVINSUL
+    Category 1         0.047
+    Category 2         0.083
+    Category 3         0.128
+    Category 4         0.186
+    Category 5         0.556
+ CIVMAKEF
+    Category 1         0.047
+    Category 2         0.094
+    Category 3         0.120
+    Category 4         0.186
+    Category 5         0.553
+ CIVEXAGG
+    Category 1         0.053
+    Category 2         0.099
+    Category 3         0.143
+    Category 4         0.209
+    Category 5         0.496
+ CIVINTRU
+    Category 1         0.046
+    Category 2         0.097
+    Category 3         0.174
+    Category 4         0.257
+    Category 5         0.426
+ CIVREFLI
+    Category 1         0.069
+    Category 2         0.116
+    Category 3         0.164
+    Category 4         0.238
+    Category 5         0.413
+ CIVSHOUT
+    Category 1         0.066
+    Category 2         0.141
+    Category 3         0.164
+    Category 4         0.223
+    Category 5         0.406
+ CIVCHARA
+    Category 1         0.093
+    Category 2         0.118
+    Category 3         0.158
+    Category 4         0.200
+    Category 5         0.432
+ CIVEVID
+    Category 1         0.121
+    Category 2         0.133
+    Category 3         0.192
+    Category 4         0.222
+    Category 5         0.333
+ CIVROLLE
+    Category 1         0.110
+    Category 2         0.169
+    Category 3         0.193
+    Category 4         0.214
+    Category 5         0.313
+
+
+STANDARDIZED MODEL RESULTS
+
+
+STDYX Standardization
+
+                                                    Two-Tailed
+                    Estimate       S.E.  Est./S.E.    P-Value
+
+ DISCURSI BY
+    CIVFACE            0.802      0.019     42.032      0.000
+    CIVINTRUPT         0.783      0.016     48.170      0.000
+    CIVPREVENT         0.751      0.022     33.766      0.000
+    CIVREFLIST         0.710      0.022     32.433      0.000
+    CIVROLLEYE         0.680      0.020     33.297      0.000
+
+ DECEPTIO BY
+    CIVEXAGG           0.802      0.019     41.961      0.000
+    CIVMISLEAD         0.862      0.019     45.988      0.000
+    CIVEVID            0.611      0.026     23.677      0.000
+
+ UTTERANC BY
+    CIVDEROG           0.850      0.017     50.772      0.000
+    CIVVULGAR          0.815      0.017     47.019      0.000
+    CIVDISRES          0.867      0.014     63.046      0.000
+    CIVSLUR            0.816      0.022     37.170      0.000
+    CIVSHOUT           0.739      0.019     39.722      0.000
+    CIVCHARAC          0.690      0.021     32.495      0.000
+    CIVMAKEFUN         0.837      0.014     59.251      0.000
+    CIVINSULT          0.848      0.015     57.657      0.000
+    CIVDEMON           0.843      0.014     60.255      0.000
+
+ DECEPTIO WITH
+    DISCURSIVE         0.933      0.019     47.995      0.000
+
+ UTTERANC WITH
+    DISCURSIVE         0.968      0.008    117.651      0.000
+    DECEPTION          0.875      0.020     44.495      0.000
+
+ Thresholds
+    CIVSLUR$1         -1.768      0.068    -25.957      0.000
+    CIVSLUR$2         -1.455      0.055    -26.376      0.000
+    CIVSLUR$3         -1.107      0.046    -23.888      0.000
+    CIVSLUR$4         -0.766      0.039    -19.648      0.000
+    CIVMISLE$1        -1.749      0.066    -26.311      0.000
+    CIVMISLE$2        -1.329      0.053    -24.971      0.000
+    CIVMISLE$3        -0.947      0.043    -22.052      0.000
+    CIVMISLE$4        -0.501      0.036    -13.904      0.000
+    CIVDISRE$1        -1.707      0.069    -24.666      0.000
+    CIVDISRE$2        -1.275      0.052    -24.678      0.000
+    CIVDISRE$3        -0.835      0.041    -20.260      0.000
+    CIVDISRE$4        -0.305      0.033     -9.163      0.000
+    CIVDEROG$1        -1.766      0.071    -24.731      0.000
+    CIVDEROG$2        -1.205      0.050    -24.219      0.000
+    CIVDEROG$3        -0.754      0.040    -18.710      0.000
+    CIVDEROG$4        -0.333      0.034     -9.799      0.000
+    CIVVULGA$1        -1.591      0.063    -25.404      0.000
+    CIVVULGA$2        -1.175      0.049    -23.750      0.000
+    CIVVULGA$3        -0.807      0.040    -20.090      0.000
+    CIVVULGA$4        -0.357      0.034    -10.383      0.000
+    CIVPREVE$1        -1.749      0.071    -24.665      0.000
+    CIVPREVE$2        -1.235      0.049    -25.070      0.000
+    CIVPREVE$3        -0.806      0.040    -20.142      0.000
+    CIVPREVE$4        -0.238      0.033     -7.172      0.000
+    CIVFACE$1         -1.697      0.065    -26.205      0.000
+    CIVFACE$2         -1.184      0.047    -25.106      0.000
+    CIVFACE$3         -0.747      0.040    -18.902      0.000
+    CIVFACE$4         -0.282      0.034     -8.352      0.000
+    CIVDEMON$1        -1.674      0.066    -25.268      0.000
+    CIVDEMON$2        -1.146      0.048    -23.745      0.000
+    CIVDEMON$3        -0.680      0.037    -18.191      0.000
+    CIVDEMON$4        -0.186      0.033     -5.697      0.000
+    CIVINSUL$1        -1.671      0.069    -24.303      0.000
+    CIVINSUL$2        -1.119      0.047    -23.821      0.000
+    CIVINSUL$3        -0.644      0.038    -16.788      0.000
+    CIVINSUL$4        -0.139      0.032     -4.332      0.000
+    CIVMAKEF$1        -1.669      0.065    -25.832      0.000
+    CIVMAKEF$2        -1.066      0.048    -22.187      0.000
+    CIVMAKEF$3        -0.633      0.037    -17.087      0.000
+    CIVMAKEF$4        -0.131      0.032     -4.045      0.000
+    CIVEXAGG$1        -1.611      0.062    -26.145      0.000
+    CIVEXAGG$2        -1.017      0.043    -23.813      0.000
+    CIVEXAGG$3        -0.530      0.035    -14.955      0.000
+    CIVEXAGG$4         0.011      0.032      0.335      0.737
+    CIVINTRU$1        -1.678      0.065    -25.805      0.000
+    CIVINTRU$2        -1.054      0.044    -23.837      0.000
+    CIVINTRU$3        -0.469      0.034    -13.628      0.000
+    CIVINTRU$4         0.182      0.032      5.616      0.000
+    CIVREFLI$1        -1.466      0.056    -26.246      0.000
+    CIVREFLI$2        -0.874      0.039    -22.252      0.000
+    CIVREFLI$3        -0.377      0.033    -11.283      0.000
+    CIVREFLI$4         0.214      0.032      6.616      0.000
+    CIVSHOUT$1        -1.498      0.056    -26.802      0.000
+    CIVSHOUT$2        -0.803      0.040    -20.022      0.000
+    CIVSHOUT$3        -0.323      0.033     -9.815      0.000
+    CIVSHOUT$4         0.231      0.032      7.144      0.000
+    CIVCHARA$1        -1.304      0.050    -26.153      0.000
+    CIVCHARA$2        -0.784      0.038    -20.722      0.000
+    CIVCHARA$3        -0.327      0.033    -10.008      0.000
+    CIVCHARA$4         0.166      0.032      5.185      0.000
+    CIVEVID$1         -1.137      0.045    -25.107      0.000
+    CIVEVID$2         -0.636      0.036    -17.578      0.000
+    CIVEVID$3         -0.131      0.033     -3.975      0.000
+    CIVEVID$4          0.413      0.033     12.388      0.000
+    CIVROLLE$1        -1.204      0.045    -26.520      0.000
+    CIVROLLE$2        -0.569      0.035    -16.438      0.000
+    CIVROLLE$3        -0.068      0.032     -2.126      0.034
+    CIVROLLE$4         0.471      0.034     13.716      0.000
+
+ Variances
+    DISCURSIVE         1.000      0.000    999.000    999.000
+    DECEPTION          1.000      0.000    999.000    999.000
+    UTTERANCE          1.000      0.000    999.000    999.000
+
+
+R-SQUARE
+
+    Observed                                        Two-Tailed
+    Variable        Estimate       S.E.  Est./S.E.    P-Value
+
+    CIVSLUR            0.665      0.036     18.585      0.000
+    CIVMISLE           0.744      0.032     22.994      0.000
+    CIVDISRE           0.751      0.024     31.523      0.000
+    CIVDEROG           0.722      0.028     25.386      0.000
+    CIVVULGA           0.664      0.028     23.510      0.000
+    CIVPREVE           0.565      0.033     16.883      0.000
+    CIVFACE            0.643      0.031     21.016      0.000
+    CIVDEMON           0.710      0.024     30.127      0.000
+    CIVINSUL           0.719      0.025     28.829      0.000
+    CIVMAKEF           0.701      0.024     29.626      0.000
+    CIVEXAGG           0.643      0.031     20.981      0.000
+    CIVINTRU           0.612      0.025     24.085      0.000
+    CIVREFLI           0.503      0.031     16.216      0.000
+    CIVSHOUT           0.546      0.028     19.861      0.000
+    CIVCHARA           0.476      0.029     16.247      0.000
+    CIVEVID            0.373      0.032     11.838      0.000
+    CIVROLLE           0.463      0.028     16.649      0.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Condition Number for the Information Matrix              0.689E-03
+       (ratio of smallest to largest eigenvalue)
+
+
+DIAGRAM INFORMATION
+
+  Use View Diagram under the Diagram menu in the Mplus Editor to view the diagram.
+  If running Mplus from the Mplus Diagrammer, the diagram opens automatically.
+
+  Diagram output
+    w:\projects\mplus files\incv-hcr-m4-ml.dgm
+
+     Beginning Time:  14:37:21
+        Ending Time:  14:49:24
+       Elapsed Time:  00:12:03
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2019 Muthen & Muthen

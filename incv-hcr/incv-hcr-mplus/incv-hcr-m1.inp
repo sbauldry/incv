@@ -1,0 +1,23 @@
+TITLE: HCR Model 1;
+DATA: FILE = incv-hcr-mplus-data.csv;
+VARIABLE: NAMES = civthreat civharm civslur civmislead civdisres civderog
+            civvulgar civprevent civface civdemon civinsult civmakefun 
+            civexagg civintrupt civreflist civshout civcharac civevid 
+            civrolleye civstand rwt;
+  USEVAR = civthreat civharm civslur civmislead civdisres civderog
+    civvulgar civprevent civface civdemon civinsult civmakefun 
+    civexagg civintrupt civreflist civshout civcharac civevid 
+    civrolleye;
+  CATEGORICAL = civthreat civharm civslur civmislead civdisres civderog
+    civvulgar civprevent civface civdemon civinsult civmakefun 
+    civexagg civintrupt civreflist civshout civcharac civevid 
+    civrolleye;
+  MISSING = ALL(-9);
+  WEIGHT = rwt;
+ANALYSIS: ESTIMATOR = WLSMV;
+MODEL:
+  Incivility BY civthreat civharm civslur civmislead civdisres civderog
+    civvulgar civprevent civface civdemon civinsult civmakefun 
+    civexagg civintrupt civreflist civshout civcharac civevid 
+    civrolleye;
+OUTPUT: STDYX;
