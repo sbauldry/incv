@@ -1,0 +1,25 @@
+TITLE: FDPI Model 3;
+DATA: FILE = incv-fdpi-mplus-data.csv;
+VARIABLE: NAMES = civthreat civharm civslur civmislead civdisres civderog
+            civvulgar civprevent civface civdemon civinsult civmakefun 
+            civexagg civintrupt civreflist civshout civcharac civevid 
+            civrolleye civstand civflame civliar civtroll civevanger civevfear
+            civanger rwt;
+  USEVAR = civslur civmislead civdisres civderog
+    civvulgar civprevent civface civdemon civinsult civmakefun 
+    civexagg civintrupt civreflist civshout civcharac civevid 
+    civrolleye civflame civliar civtroll civevanger civevfear civanger;
+  CATEGORICAL = civslur civmislead civdisres civderog
+    civvulgar civprevent civface civdemon civinsult civmakefun 
+    civexagg civintrupt civreflist civshout civcharac civevid 
+    civrolleye civflame civliar civtroll civevanger civevfear civanger;
+  MISSING = ALL(-9);
+  WEIGHT = rwt;
+ANALYSIS: ESTIMATOR = MLR;
+MODEL:
+  Discursive BY civface civintrupt civprevent civreflist civrolleye;
+  Negative   BY civtroll civevanger civevfear civanger;
+  Deception  BY civexagg civmislead civevid;
+  Utterance  BY civderog civvulgar civdisres civslur civshout
+                civcharac civmakefun civinsult civdemon civflame civliar;
+OUTPUT: STDYX;
